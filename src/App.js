@@ -36,7 +36,6 @@ const reducer = (state, action) => {
     case 'withdraw':
       return { ...state, balance: state.balance - action.payload };
     case 'requestLoan':
-      console.log('inside requestLoan');
       if (state.loan === 0) {
         return {
           ...state,
