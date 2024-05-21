@@ -36,18 +36,20 @@ const reducer = (state, action) => {
     case 'withdraw':
       return { ...state, balance: state.balance - action.payload };
     case 'requestLoan':
-      if (state.loan === 0) {
+      if (state.loan === 0)
         return {
           ...state,
           balance: state.balance + action.payload,
           loan: action.payload,
         };
-      } else return { ...state };
+
+      return state;
     case 'payLoan':
       return { ...state, balance: state.balance - state.loan, loan: 0 };
     case 'closeAccount':
-      if (state.loan === 0 && state.balance === 0) return { ...initialState };
-      else return { ...state };
+      if (state.loan === 0 && state.balance === 0) return initialState;
+
+      return state;
     default:
       throw new Error('Unknown action');
   }
